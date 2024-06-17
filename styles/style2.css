@@ -58,7 +58,7 @@ nav ul li a:hover {
 }
 
 .nav > .nav-links {
-  display: inline; /* Displays nav-links as inline */
+  display:inline /* Displays nav-links as inline */
   font-size: 18px; /* Sets the font size to 18px */
 }
 
