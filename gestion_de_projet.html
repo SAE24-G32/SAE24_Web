@@ -1,51 +1,61 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <title>SAE 24</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Manage RWD -->
-    <meta name="author" content="Groupe 32" />
-    <meta name="description" content="Site web de presentation de la SAE 24" />
-    <meta name="keywords" content="son, ultrason, iot, capteur" />
-    <link rel="stylesheet" type="text/css" href="styles/style.css" media="screen"/>
-   </head>
-   <body>
-      <header>
-        <h1>Gestion de projet</h1>
-        <nav>
-          <ul>
-                 <li><a href="index.php" class="first">Accueil</a></li>
-                 <li><a href="consultation.php">Consultation</a></li>
-                 <li><a href="admin.php">Administration</a></li>
-                 <li><a href="#">Gestion de projet</a></li>
-          </ul>
-         </nav>
-        </nav>
-      </header>
+ <head>
+  <title>SAE 24</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Groupe 32" />
+  <meta name="description" content="Site web de presentation de la SAE 24" />
+  <meta name="keywords" content="son, ultrason, iot, capteur" />
+  <link rel="stylesheet" type="text/css" href="styles/style.css" media="screen"/>
+ </head>
+ <body>
+    <header>
+      <h1>Gestion de projet</h1>
+      <nav>
+        <ul>
+               <li><a href="index.html" class="first">Accueil</a></li>
+               <li><a href="consultation_son.php">Consultation son</a></li>
+               <li><a href="consultation_ultrason.php">Consultation ultrason</a></li>
+               <li><a href="admin.php">Administration</a></li>
+               <li><a href="#">Gestion de projet</a></li>
+        </ul>
+       </nav>
+      </nav>
+    </header>
 
     <main>
-      <h1>LES ASPECTS TECHNIQUES</h1>
+      <h2>LES ASPECTS TECHNIQUES</h2>
 
       <section class="bulle">
         <header>
-          <h2>GANTT et outils collaboratifs</h2>
+          <h4>GANTT et outils collaboratifs</h4>
         </header>
         <article>
           <header>
-            <h3>GANTT</h3>
+            <h4>Outil collaboratif (GANTT)</h4>
           </header>
           <p class="justify">
-            <img src="images/capture-du-gantt.PNG" alt="GANTT" width="920" />
+            <img src="images/GANTT_previsionnel_sae24 (plié).png" alt="GANTT" width="920" />
           </p>
         </article>
 
         <article>
           <header>
-            <h3>Outil collaboratif (Drive)</h3>
+            <h4>Outil collaboratif (GANTT)</h4>
+          </header>
+          <p class="justify">
+            <img src="images/GANTT_previsionnel_sae24.png" alt="GANTT" width="920" />
+          </p>
+        </article>
+
+        <article>
+          <header>
+            <h4>Outil collaboratif (Drive)</h4>
           </header>
           <p class="justify">
             <img
-              src="images/screen_outils_col_drive.png"
+              src="images/screen_drive.png"
               alt="Drive"
               width="920"
             />
@@ -54,13 +64,14 @@
 
         <article>
           <header>
-            <h3>Outil collaboratif (Github)</h3>
+            <h4>Outil collaboratif (Github)</h4>
           </header>
           <p class="justify">
             <img src="images/screen_github.png" alt="Github" width="920" />
           </p>
         </article>
       </section>
+
 
       <section class="bulle">
         <header>
@@ -81,9 +92,7 @@
               étant donné qu'on est un groupe de 7 et qu'on peut être vite
               débordé.
             </p>
-          </section>
 
-          <section>
             <h4>PROBLÈMES RENCONTRÉS</h4>
             <p>
               Le plus compliqué dans la réalisation du GANTT a été le diagramme
@@ -93,119 +102,126 @@
             </p>
           </section>
         </article>
+      </section>
 
+
+      <section class="bulle">
         <article>
           <header>
             <h3>Lilian Rodriguez</h3>
           </header>
           <section>
             <p>
-              Durant cette SAE23, j'ai installé le serveur xampp, créé la table
-              SQL via phpMyAdmin, la création d'un script récupérant les données
-              MQTT via PHP pour les envoyer sur notre base de données,
-              l'affichage des différentes valeurs récupérées dans la base de
-              données grâce à un script PHP et enfin le code PHP calculant les
-              moyennes, le minimum et le maximum en fonction du type de données
-              (CO2, température, etc.).
+              J'ai réalisé le Gantt prévisionnel et final avec mon groupe
+              puisque il a fallut savoir qui préférait faire quoi et où les
+              personnes avaient le plus de faciliter, on a donc réparti les
+              tâches tous ensemble. Pour ce Gantt, il était nécessaire de
+              planifier le temps de réalisation de chaques tâches, mais aussi
+              savoir qui va quelle tâche pour que l'on puisse mieux s'organiser
+              étant donné qu'on est un groupe de 7 et qu'on peut être vite
+              débordé.
             </p>
 
             <h4>PROBLÈMES RENCONTRÉS</h4>
             <p>
-              Mon plus gros problème était celui des requêtes SQL pour la
-              jonction de tables afin de pouvoir afficher les données qui sont
-              dans les tables. De plus, j'ai eu quelques problèmes avec les
-              sessions, mais je me suis tout de même aidé du TP R209.
+              Le plus compliqué dans la réalisation du GANTT a été le diagramme
+              de ressource puisqu'il ne fallait pas que les membres du groupe
+              soient sur trop de tâches en même temps et qu'il n'y est pas des
+              membres à 150% et d'autres à 90%.
             </p>
           </section>
         </article>
+      </section>
 
+
+      <section class="bulle">
         <article>
           <header>
             <h3>Samuel Martin</h3>
           </header>
-          <p>
-            Durant cette SAE23, j'ai travaillé sur la solution site dynamique
-            utilisant des dockers. Pour cela, j'ai manipulé les dockers
-            suivants: influxdb, grafana et nodered.
-          </p>
-
-          <h4>INFLUXDB</h4>
-          <p>
-            InfluxDB est une base de données open source conçue spécifiquement
-            pour capturer, stocker et interroger efficacement de grandes
-            quantités de données temporelles générées par des applications IoT,
-            des systèmes de surveillance, des événements en temps réel et
-            d'autres sources de données qui évoluent dans le temps. Dans notre
-            cas, je m'en suis servi afin de stocker ce que nodered récupérait
-            des données du broker de l'IUT dans une base de donnée :
-
-            <img
-              src="images/images_docker/screen_influxdb.png"
-              alt="BD influxdb"
-              width="480"
-            />
-          </p>
-
-          <h4>PROBLÈMES RENCONTRÉS</h4>
-          <p>
-            Parmi tous les problèmes rencontrés des erreurs dans les noeuds de
-            nodered, des problèmes pour récupérer les données du broker, mais
-            mon plus gros problème a sûrement été l'installation de la base de
-            donnée influxdb. Je l'avais au départ mal configuré donc les données
-            ne trouvaient pas d'endroit pour être stockées. <br /><br />
-          </p>
-        </article>
-
-        <article>
-          <header>
-            <h3>Ernest nsima-Makon</h3>
-          </header>
           <section>
             <p>
-              Durant cette SAE23, j'ai installé le serveur xampp, créé la table
-              SQL via phpMyAdmin, la création d'un script récupérant les données
-              MQTT via PHP pour les envoyer sur notre base de données,
-              l'affichage des différentes valeurs récupérées dans la base de
-              données grâce à un script PHP et enfin le code PHP calculant les
-              moyennes, le minimum et le maximum en fonction du type de données
-              (CO2, température, etc.).
+              J'ai réalisé le Gantt prévisionnel et final avec mon groupe
+              puisque il a fallut savoir qui préférait faire quoi et où les
+              personnes avaient le plus de faciliter, on a donc réparti les
+              tâches tous ensemble. Pour ce Gantt, il était nécessaire de
+              planifier le temps de réalisation de chaques tâches, mais aussi
+              savoir qui va quelle tâche pour que l'on puisse mieux s'organiser
+              étant donné qu'on est un groupe de 7 et qu'on peut être vite
+              débordé.
             </p>
 
             <h4>PROBLÈMES RENCONTRÉS</h4>
             <p>
-              Mon plus gros problème était celui des requêtes SQL pour la
-              jonction de tables afin de pouvoir afficher les données qui sont
-              dans les tables. De plus, j'ai eu quelques problèmes avec les
-              sessions, mais je me suis tout de même aidé du TP R209.
+              Le plus compliqué dans la réalisation du GANTT a été le diagramme
+              de ressource puisqu'il ne fallait pas que les membres du groupe
+              soient sur trop de tâches en même temps et qu'il n'y est pas des
+              membres à 150% et d'autres à 90%.
             </p>
           </section>
         </article>
+      </section>
 
+
+      <section class="bulle">
+        <article>
+          <header>
+            <h3>Ernest Nsima</h3>
+          </header>
+          <section>
+            <p>
+              J'ai réalisé le Gantt prévisionnel et final avec mon groupe
+              puisque il a fallut savoir qui préférait faire quoi et où les
+              personnes avaient le plus de faciliter, on a donc réparti les
+              tâches tous ensemble. Pour ce Gantt, il était nécessaire de
+              planifier le temps de réalisation de chaques tâches, mais aussi
+              savoir qui va quelle tâche pour que l'on puisse mieux s'organiser
+              étant donné qu'on est un groupe de 7 et qu'on peut être vite
+              débordé.
+            </p>
+
+            <h4>PROBLÈMES RENCONTRÉS</h4>
+            <p>
+              Le plus compliqué dans la réalisation du GANTT a été le diagramme
+              de ressource puisqu'il ne fallait pas que les membres du groupe
+              soient sur trop de tâches en même temps et qu'il n'y est pas des
+              membres à 150% et d'autres à 90%.
+            </p>
+          </section>
+        </article>
+      </section> 
+
+
+      <section class="bulle">
         <article>
           <header>
             <h3>Florian Meissonnier</h3>
           </header>
           <section>
             <p>
-              Durant cette SAE23, j'ai installé le serveur xampp, créé la table
-              SQL via phpMyAdmin, la création d'un script récupérant les données
-              MQTT via PHP pour les envoyer sur notre base de données,
-              l'affichage des différentes valeurs récupérées dans la base de
-              données grâce à un script PHP et enfin le code PHP calculant les
-              moyennes, le minimum et le maximum en fonction du type de données
-              (CO2, température, etc.).
+              J'ai réalisé le Gantt prévisionnel et final avec mon groupe
+              puisque il a fallut savoir qui préférait faire quoi et où les
+              personnes avaient le plus de faciliter, on a donc réparti les
+              tâches tous ensemble. Pour ce Gantt, il était nécessaire de
+              planifier le temps de réalisation de chaques tâches, mais aussi
+              savoir qui va quelle tâche pour que l'on puisse mieux s'organiser
+              étant donné qu'on est un groupe de 7 et qu'on peut être vite
+              débordé.
             </p>
 
             <h4>PROBLÈMES RENCONTRÉS</h4>
             <p>
-              Mon plus gros problème était celui des requêtes SQL pour la
-              jonction de tables afin de pouvoir afficher les données qui sont
-              dans les tables. De plus, j'ai eu quelques problèmes avec les
-              sessions, mais je me suis tout de même aidé du TP R209.
+              Le plus compliqué dans la réalisation du GANTT a été le diagramme
+              de ressource puisqu'il ne fallait pas que les membres du groupe
+              soient sur trop de tâches en même temps et qu'il n'y est pas des
+              membres à 150% et d'autres à 90%.
             </p>
           </section>
         </article>
+      </section>
 
+
+      <section class="bulle">
         <article>
           <header>
             <h3>Rémi Dubuc</h3>
@@ -213,7 +229,7 @@
           <section>
             <p>
               Durant cette SAE24, j'ai installé et configuré le serveur xampp,
-              en y installant le nécessaire comme un serveur web (apache2), un
+              en y installant le nécessaire comme MySql, un serveur web (apache2), un
               serveur SSH pour se connecter à distance à la VM, python, php
               mysqli. J'ai également créé la base de données via phpMyAdmin avec
               l'aide de camarades. Pour finir j'ai réalisé les pages HTML du
