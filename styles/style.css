@@ -83,6 +83,11 @@ nav ul li a:hover:not(.first)
   font-size: 1.3rem; /* Sets the font size to 1.3rem */
   padding-bottom: 30px; /* Adds a bottom padding of 30px */
 }
+.bulle p {
+  text-align: justify; /* Justifies the text */
+  margin-left: 20px; /* Adds a left margin of 20px */
+  margin-right: 20px; /* Adds a right margin of 20px */
+}
 
 section.sujet {
   margin-bottom: 200px; /* Adds a bottom margin of 200px */
