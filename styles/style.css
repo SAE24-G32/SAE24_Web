@@ -19,7 +19,7 @@ aside img {
 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Sets the font family for the body to "Helvetica Neue", falling back to Helvetica, Arial, and then sans-serif */
-  background: #f7f7f7; /* Sets the background color of the body to #f7f7f7 */
+  background-image: url(../images/background.jpg);
 }
 
 h1,
@@ -33,6 +33,42 @@ h1 {
 
 h2 {
   font-size: 1.5rem; /* Sets the font size of h2 elements to 1.5rem */
+}
+
+nav ul 
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav ul li:first-child 
+{
+  background-color: darkblue;
+}
+
+nav ul li 
+{
+  float: left;
+  border-right: none;
+  border-radius: 50%;
+}
+
+nav ul li a 
+{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+}
+
+nav ul li a:hover:not(.first)
+{
+  background-color: #DDDDDD;
+  color: black;
+  border-radius: 50%;
 }
 
 .bulle {
