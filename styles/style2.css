@@ -8,7 +8,7 @@ nav ul {
 nav ul li {
   float: left; /* Floats list items to the left */
   border-right: none; /* Removes the right border */
-  width: 25%; /* Sets the width of list items to 25% */
+  width: 20%; /* Sets the width of list items to 25% */
 }
 
 nav ul li a {
@@ -93,7 +93,7 @@ nav ul li a:hover {
 
   .nav > .nav-btn > label > span {
     display: block; /* Displays span as block */
-    width: 20px; /* Sets the width to 25px */
+    width: 20px; /* Sets the width to 20px */
     height: 10px; /* Sets the height to 10px */
     border-top: 2px solid #eee; /* Adds a top border of 2px solid #eee */
   }
