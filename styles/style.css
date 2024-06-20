@@ -240,6 +240,27 @@ strong {
   margin-right: 20px; /* Adds a right margin of 20px */
 }
 
+table {
+  border: solid #ccc; /* Sets a solid border with color #ccc */
+  text-align: center; /* Centers the text in the table */
+}
+
+th {
+  font-family: monospace; /* Sets the font family to monospace */
+  border: thin solid #999; /* Sets a thin solid border with color #999 */
+  width: 50%; /* Sets the width of table headers to 50% */
+  padding: 15px; /* Adds padding of 15px */
+  background-color: #f2f2f2; /* Sets the background color to #f2f2f2 */
+  font-size: 1.4rem; /* Sets the font size to 1.4rem */
+}
+
+td {
+  border: thin solid #999; /* Sets a thin solid border with color #999 */
+  padding: 15px; /* Adds padding of 15px */
+  text-align: center; /* Centers the text */
+  background-color: #fafafa; /* Sets the background color to #fafafa */
+}
+
 .table2 {
   border: solid #ccc; /* Sets a solid border with color #ccc */
   margin: auto;
