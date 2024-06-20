@@ -37,10 +37,10 @@
     </p>
 
     <section>
-        <button onclick="location.href='./ajouter.php'">Ajouter un élément </button>
-        <button onclick="location.href='./supprimer.php'">Supprimer un élément</button>
-        <button onclick="location.href='./reset_son.php'">Réinitialiser les positions pour la partie son</button>
-        <button onclick="location.href='./reset_ultrason.php'">Réinitialiser les positions pour la partie ultrason</button>
+        <button class="bouton" onclick="location.href='./ajouter.php'">Ajouter un élément </button>
+        <button class="bouton" onclick="location.href='./supprimer.php'">Supprimer un élément</button>
+        <button class="bouton" onclick="location.href='./reset_son.php'">Réinitialiser les positions pour la partie son</button>
+        <button class="bouton" onclick="location.href='./reset_ultrason.php'">Réinitialiser les positions pour la partie ultrason</button>
     </section>
 
     <footer>

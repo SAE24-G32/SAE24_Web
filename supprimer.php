@@ -37,8 +37,8 @@
     </p>
 
     <section>
-        <button onclick="location.href='./sup_salle.php'">Supprimer une salle </button>
-        <button onclick="location.href='./sup_capteur.php'">Supprimer un capteur</button>
+        <button class="bouton" onclick="location.href='./sup_salle.php'">Supprimer une salle </button>
+        <button class="bouton" onclick="location.href='./sup_capteur.php'">Supprimer un capteur</button>
     </section>
 
     <footer>

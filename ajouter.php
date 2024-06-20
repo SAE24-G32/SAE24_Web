@@ -37,8 +37,8 @@
     </p>
 
     <section>
-        <button onclick="location.href='./add_salle.php'">Ajouter une salle </button>
-        <button onclick="location.href='./add_capteur.php'">Ajouter un capteur</button>
+        <button  class="bouton" onclick="location.href='./add_salle.php'">Ajouter une salle </button>
+        <button class="bouton" onclick="location.href='./add_capteur.php'">Ajouter un capteur</button>
     </section>
 
     <footer>
