@@ -168,10 +168,7 @@
 
                     while (y != tableau.length) {
                         const cas = Object.values(ligne[y])
-                        console.log(tbody)
-                        console.log(tbody.children)
-                        console.log(tbody.children[i])
-                        tbody.children[i].children[y].style.backgroundColor = cas
+                        tbody.children[tbody.children.length - i - 1].children[y].style.backgroundColor = cas
                         y++
                     }
 

@@ -2,7 +2,7 @@
   // Connection
   $conn = mysqli_connect("localhost", "sae24", "passroot", "sae24");
   if (!$conn) {
-      die("Connexion échouée: " . mysqli_connect_error());
+    die("Connexion échouée: " . mysqli_connect_error());
   }
 
 
