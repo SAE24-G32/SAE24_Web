@@ -162,6 +162,7 @@
                 const tableau = Object.values(this.responseText)
                 while (i != tableau.length) {
                     const ligne = Object.values(tableau[i])
+                    console.log(ligne)
                     let y = 0
 
                     while (y != tableau.length) {
