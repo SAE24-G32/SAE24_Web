@@ -168,6 +168,9 @@
 
                     while (y != tableau.length) {
                         const cas = Object.values(ligne[y])
+                        console.log(table)
+                        console.log(table.children)
+                        console.log(table.children[i])
                         table.children[i].children[y].style.backgroundColor = cas
                         y++
                     }
@@ -178,7 +181,7 @@
         };
         xmlhttp.open("GET", "./consultation_son_refresh.php?salle=<?php echo $salle_selectionnee; ?>", true);
         xmlhttp.send();
-    }, 1000)
+    }, 10000)
   </script>
 
 
