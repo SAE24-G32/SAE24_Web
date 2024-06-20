@@ -93,10 +93,10 @@
            if ($x >= 1 && $x <= $rows && $y >= 1 && $y <= $cols) {
                if ($i == count($positions) - 1) {
                    // Dernière position en rouge
-                   $colors[$rows - $y + 1][$x] = 'red'; // Inverser l'axe des y
+                   $colors[$rows - 1 - $x][$y] = 'red'; // Inverser l'axe des y
                } else {
                    // Positions précédentes en orange
-                   $colors[$rows - $y + 1][$x] = 'orange'; // Inverser l'axe des y
+                   $colors[$rows - 1 - $x][$y] = 'orange'; // Inverser l'axe des y
                }
            }
        }
