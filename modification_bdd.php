@@ -32,19 +32,21 @@
 
     <p class="bulle">
         <br />
-	    <em><strong>Quel élement voulez-vous supprimer ?</strong></em>
+	    <em><strong>Quelle action voulez-vous effectuer ?</strong></em>
 	    <br />
     </p>
 
     <section>
-        <button onclick="location.href='./sup_salle.php'">Supprimer une salle </button>
-        <button onclick="location.href='./sup_capteur.php'">Supprimer un capteur</button>
+        <button onclick="location.href='./ajouter.php'">Ajouter un élément </button>
+        <button onclick="location.href='./supprimer.php'">Supprimer un élément</button>
+        <button onclick="location.href='./reset_son.php'">Réinitialiser les positions pour la partie son</button>
+        <button onclick="location.href='./reset_ultrason.php'">Réinitialiser les positions pour la partie ultrason</button>
     </section>
 
     <footer>
 			<p class="bulle"><a href="index.html">Retour à l'accueil</a>
             </br>
-			<a href="modification_bdd.php">Choisir une autre action</a></p>
+			<a href="admin.php">Déconnexion</a></p>
 		</footer>
 	</body>
 </html>

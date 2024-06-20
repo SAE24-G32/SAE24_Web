@@ -1,7 +1,6 @@
-<?php 
-	session_start(); 
-	if ($_SESSION["auth"]!=TRUE)
-		header("Location:login_admin_error.php");
+<?php
+	// Start the session
+	session_start();
 ?>
 
 <!DOCTYPE html>
@@ -30,21 +29,26 @@
       </nav>
     </header>
 
-    <p class="bulle">
-        <br />
-	    <em><strong>Quel élement voulez-vous supprimer ?</strong></em>
-	    <br />
-    </p>
-
-    <section>
-        <button onclick="location.href='./sup_salle.php'">Supprimer une salle </button>
-        <button onclick="location.href='./sup_capteur.php'">Supprimer un capteur</button>
-    </section>
-
-    <footer>
+		<?php 
+			$_SESSION = array(); // Reset of the session array
+			session_destroy();   // Session destruction
+			unset($_SESSION);    // Array destruction
+		?>
+		<section class="bulle">
+			<p>
+				<br />
+				<em><strong>Administration de la base : Acc&egrave;s limit&eacute; aux personnes autoris&eacute;es</strong></em>
+				<br />
+			</p>
+			<br />
+			<p>Mot de passe non saisi ou erron&eacute; !!!</p>
+			<br />
+			<hr />
+		</section>
+		<footer>
 			<p class="bulle"><a href="index.html">Retour à l'accueil</a>
             </br>
-			<a href="modification_bdd.php">Choisir une autre action</a></p>
+			<a href="admin.php">Retour à l'identification</a></p>
 		</footer>
 	</body>
 </html>

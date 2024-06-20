@@ -30,18 +30,19 @@
       </nav>
     </header>
 
-    <p class="bulle">
-        <br />
-	    <em><strong>Quel élement voulez-vous supprimer ?</strong></em>
-	    <br />
-    </p>
+    <?php
+    include 'mysql.php';
+    $query = "DELETE FROM positions_ultrason";
+    $result = mysqli_query($id_bd, $query);
 
-    <section>
-        <button onclick="location.href='./sup_salle.php'">Supprimer une salle </button>
-        <button onclick="location.href='./sup_capteur.php'">Supprimer un capteur</button>
-    </section>
+    if ($result) {
+        echo "<p class=bulle>Les positions ultrason de la salle ont été supprimées avec succès.</p>";
+    } else {
+        echo "<p class=bulle>Une erreur est survenue lors de la suppression des positions ultrason : " . mysqli_error($id_bd)."</p>";
+    }
+    ?>
 
-    <footer>
+        <footer>
 			<p class="bulle"><a href="index.html">Retour à l'accueil</a>
             </br>
 			<a href="modification_bdd.php">Choisir une autre action</a></p>

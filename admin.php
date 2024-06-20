@@ -1,7 +1,6 @@
-<?php 
-	session_start(); 
-	if ($_SESSION["auth"]!=TRUE)
-		header("Location:login_admin_error.php");
+<?php
+	// Start the session
+	session_start();
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +22,7 @@
                <li><a href="index.html" class="first">Accueil</a></li>
                <li><a href="consultation_son.php">Consultation son</a></li>
                <li><a href="consultation_son.php">Consultation ultrason</a></li>
-               <li><a href="admin.php">Administration</a></li>
+               <li><a href="#">Administration</a></li>
                <li><a href="gestion_de_projet.html">Gestion de projet</a></li>
         </ul>
        </nav>
@@ -32,19 +31,20 @@
 
     <p class="bulle">
         <br />
-	    <em><strong>Quel élement voulez-vous supprimer ?</strong></em>
+	    Administration de la base : Acc&egrave;s limit&eacute; aux personnes autoris&eacute;es
 	    <br />
     </p>
 
     <section>
-        <button onclick="location.href='./sup_salle.php'">Supprimer une salle </button>
-        <button onclick="location.href='./sup_capteur.php'">Supprimer un capteur</button>
-    </section>
+		<form action="login_admin.php" method="post" enctype="multipart/form-data" class="form">
+			<fieldset>
+				<legend>Saisissez le mot de passe administrateur</legend>
+				<label for="mdp">Mot de passe : </label>
+				<input type="password" name="mdp" id="mdp"/>
+			</fieldset>
+			<p>
+				<input type="submit" value="Valider" />
+			</p>
+		</form>
 
-    <footer>
-			<p class="bulle"><a href="index.html">Retour à l'accueil</a>
-            </br>
-			<a href="modification_bdd.php">Choisir une autre action</a></p>
-		</footer>
-	</body>
-</html>
+    </section>

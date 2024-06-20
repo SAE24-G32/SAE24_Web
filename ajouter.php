@@ -32,13 +32,13 @@
 
     <p class="bulle">
         <br />
-	    <em><strong>Quel élement voulez-vous supprimer ?</strong></em>
+	    <em><strong>Quel élement voulez-vous ajouter ?</strong></em>
 	    <br />
     </p>
 
     <section>
-        <button onclick="location.href='./sup_salle.php'">Supprimer une salle </button>
-        <button onclick="location.href='./sup_capteur.php'">Supprimer un capteur</button>
+        <button onclick="location.href='./add_salle.php'">Ajouter une salle </button>
+        <button onclick="location.href='./add_capteur.php'">Ajouter un capteur</button>
     </section>
 
     <footer>
