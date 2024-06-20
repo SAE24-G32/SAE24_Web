@@ -151,7 +151,7 @@
   </table>
 
   <script>
-    const table = document.querySelector("table")
+    const tbody = document.querySelector("tbody")
 
     setInterval(function() {
         var xmlhttp = new XMLHttpRequest();
@@ -168,10 +168,10 @@
 
                     while (y != tableau.length) {
                         const cas = Object.values(ligne[y])
-                        console.log(table)
-                        console.log(table.children)
-                        console.log(table.children[i])
-                        table.children[i].children[y].style.backgroundColor = cas
+                        console.log(tbody)
+                        console.log(tbody.children)
+                        console.log(tbody.children[i])
+                        tbody.children[i].children[y].style.backgroundColor = cas
                         y++
                     }
 
@@ -181,7 +181,7 @@
         };
         xmlhttp.open("GET", "./consultation_son_refresh.php?salle=<?php echo $salle_selectionnee; ?>", true);
         xmlhttp.send();
-    }, 10000)
+    }, 1000)
   </script>
 
 
