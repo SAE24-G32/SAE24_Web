@@ -5,6 +5,37 @@
 
 html {
   height: 100%; /* Ensures the HTML element takes up the full height of the viewport */
+  --u: 2.1vmin;
+  --c1: #404d73; /* Couleur très sombre */
+  --c2: #6a7aab; /* Couleur très sombre */
+  --c3: #1b2139; /* Couleur très sombre */
+  --c4: #303a52; /* Couleur très sombre */
+  --gp: 50% / calc(var(--u) * 10) calc(var(--u) * 10);
+  --bp: calc(var(--u) * -5) calc(var(--u) * -5);
+  height: 100vh;
+  --bg: conic-gradient(from 0deg at 75% 25%, var(--c1) 0 45deg, #fff0 0 100%)
+      var(--gp),
+    conic-gradient(
+        from 0deg at 75% 50%,
+        var(--c2) 0 45deg,
+        var(--c1) 0 90deg,
+        #fff0 0 100%
+      )
+      var(--gp),
+    conic-gradient(from -45deg at 25% 25%, var(--c1) 0 135deg, #fff0 0 100%)
+      var(--gp),
+    conic-gradient(
+        from -90deg at 25% 50%,
+        var(--c1) 0 45deg,
+        var(--c3) 0 90deg,
+        var(--c4) 0 180deg,
+        #fff0 0 100%
+      )
+      var(--gp);
+  background: var(--bg), var(--bg);
+  background-position: var(--bp), var(--bp), var(--bp), var(--bp), 0 0, 0 0, 0 0,
+    0 0;
+  background-color: var(--c1);
 }
 
 aside a {
@@ -29,34 +60,40 @@ h2 {
 
 h1 {
   font-size: 3rem; /* Sets the font size of h1 elements to 3rem */
+  color: white;
 }
 
 h2 {
   font-size: 1.5rem; /* Sets the font size of h2 elements to 1.5rem */
+  color: white;
 }
 
-nav ul 
-{
+nav {
+  text-align: center;
+}
+
+nav ul {
+  display: inline-block; /* Make the ul an inline-block element */
+  border-radius: 10px; /* Rounds the corners of the border with a radius of 10px */
+  background-color: black;
+  opacity: 70%;
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-nav ul li:first-child 
-{
+nav ul li:first-child {
   background-color: darkblue;
 }
 
-nav ul li 
-{
+nav ul li {
   float: left;
   border-right: none;
   border-radius: 50%;
 }
 
-nav ul li a 
-{
+nav ul li a {
   display: block;
   color: white;
   text-align: center;
@@ -64,9 +101,8 @@ nav ul li a
   text-decoration: none;
 }
 
-nav ul li a:hover:not(.first)
-{
-  background-color: #DDDDDD;
+nav ul li a:hover:not(.first) {
+  background-color: #dddddd;
   color: black;
   border-radius: 50%;
 }
@@ -83,12 +119,20 @@ nav ul li a:hover:not(.first)
   font-size: 1.3rem; /* Sets the font size to 1.3rem */
   padding-bottom: 30px; /* Adds a bottom padding of 30px */
 }
+.bulle img {
+  display: block; /* Makes the image a block element */
+  text-align: center;
+  margin-left: auto; /* Centers the image horizontally */
+  margin-right: auto; /* Centers the image horizontally */
+}
 .bulle p {
   text-align: justify; /* Justifies the text */
   margin-left: 20px; /* Adds a left margin of 20px */
   margin-right: 20px; /* Adds a right margin of 20px */
 }
-
+.bulle h2 {
+  color: black;
+}
 section.sujet {
   margin-bottom: 200px; /* Adds a bottom margin of 200px */
 }
@@ -149,6 +193,7 @@ footer ul li {
   float: left; /* Floats list items to the left */
   width: 33%; /* Sets the width to 33% */
   list-style-type: none; /* Removes the default list styling */
+  color: white;
 }
 
 footer ul li:first-child {
@@ -157,10 +202,12 @@ footer ul li:first-child {
 
 footer ul li:last-child {
   text-align: right; /* Aligns the last list item to the right */
+  color: white;
 }
 
 footer ul li a {
   text-decoration: none; /* Removes the underline from links inside footer list items */
+  color: white;
 }
 
 @media (max-width: 1280px) {
@@ -238,3 +285,6 @@ form {
   margin-bottom: 20px;
 }
 
+.salle-label {
+  color: white;
+}
