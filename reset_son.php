@@ -34,14 +34,14 @@
         <label for="salle">Sélectionnez une salle :</label>
         <select name="salle" id="salle">
             <?php
-            // Connexion à la base de données
+            // Connection to the database
             include 'mysql.php';
 
-            // Récupération des salles de la table positions_son
+            // Retrieving rooms from the positions_son table
             $query = "SELECT DISTINCT IDSalle FROM positions_son";
             $result = mysqli_query($id_bd, $query);
 
-            // Boucle pour afficher les options du select
+            // Loop to display the select options
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<option value='" . $row['IDSalle'] . "'>" . $row['IDSalle'] . "</option>";
             }
@@ -51,11 +51,11 @@
     </form>
 
     <?php
-    // Vérification si le formulaire a été soumis
+    // Checking if the form has been submitted
     if (isset($_POST['supprimer'])) {
         $salle = $_POST['salle'];
 
-        // Suppression des lignes où la clé étrangère est la salle sélectionnée
+        // Deleting rows where the foreign key is the selected room
         $query = "DELETE FROM positions_son WHERE IDSalle = '$salle'";
         $result = mysqli_query($id_bd, $query);
 

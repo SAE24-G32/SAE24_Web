@@ -31,20 +31,20 @@
     </header>
 
     <?php
-    // Connexion à la base de données
+    // Access to the database
     include 'mysql.php';
 
-    // Requête pour récupérer toutes les données de la table "salles"
+    // Query to retrieve all data from the “salles” table
     $sql = "SELECT * FROM salles";
     $result = mysqli_query($id_bd, $sql);
 
-    // Vérifier s'il y a des résultats
+    // Check if there are results
     if (mysqli_num_rows($result) > 0) {
-        // Début du tableau HTML
+        // Beginning of the table
         echo "<table class=table2>";
-        echo "<tr><th class=th2>Nom de la Salle</th><th>Nom du Batiment</th><th>Capacite</th></tr>";
+        echo "<tr><th class=th2>Nom de la Salle</th><th class=th2>Nom du Batiment</th><th class=th2>Capacite</th></tr>";
 
-        // Boucle pour afficher chaque ligne de données
+        // Loop to display each row of data
         while($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             echo "<td class=td2>" . $row["IDSalle"] . "</td>";
@@ -53,12 +53,12 @@
             echo "</tr>";
         }
 
-        echo "</table>"; // Fin du tableau
+        echo "</table>"; // End of the table
     } else {
         echo "Table salles vide.";
     }
 
-    // Fermer la connexion
+    // close the connection
     mysqli_close($id_bd);
     ?>
 
@@ -68,7 +68,7 @@
             <label for="IDSalle">Nom de la salle:</label>
             <input type="text" name="IDSalle" id ="IDSalle" required/>
             <label for="Capacite">Capacite :</label>
-            <input type="text" name="Capacite" id ="Capacite" />
+            <input type="number" name="Capacite" id ="Capacite" />
             <label for="NomBatiment">Batiment :</label>
             <input type="text" name="NomBatiment" id ="NomBatiment" required/>
         </fieldset>

@@ -34,14 +34,14 @@
         <label for="capteur">Sélectionnez un capteur ultrason:</label>
         <select name="capteur" id="capteur">
             <?php
-            // Connexion à la base de données
+            // Access to the database
             include 'mysql.php';
 
-            // Récupération des salles de la table positions_son
+            // Recovery of rooms from table capteurs_ultrason
             $query = "SELECT DISTINCT IDCapteur FROM capteurs_ultrason";
             $result = mysqli_query($id_bd, $query);
 
-            // Boucle pour afficher les options du select
+            // Loop to display the select options
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<option value='" . $row['IDCapteur'] . "'>" . $row['IDCapteur'] . "</option>";
             }
@@ -51,11 +51,11 @@
     </form>
 
     <?php
-    // Vérification si le formulaire a été soumis
+    // Checking if the form has been submitted
     if (isset($_POST['supprimer'])) {
         $capteur = $_POST['capteur'];
 
-        // Suppression des lignes où la clé étrangère est la salle sélectionnée
+        // Deleting rows where the foreign key is the selected room
         $query = "DELETE FROM capteurs_ultrason WHERE IDCapteur = '$capteur'";
         $result = mysqli_query($id_bd, $query);
 

@@ -32,7 +32,6 @@
 
     <?php
     include 'mysql.php';
-    // Suppression des lignes où la clé étrangère est la salle sélectionnée
     $query = "DELETE FROM positions_ultrason";
     $result = mysqli_query($id_bd, $query);
 

@@ -31,32 +31,34 @@
     </header>
 
     <?php
-    // Connexion à la base de données
+    // Access to the database
     include 'mysql.php';
 
-    // Requête pour récupérer toutes les données de la table "salles"
+    // Query to retrieve all data from the “capteurs_ultrason” table
     $sql = "SELECT * FROM capteurs_ultrason";
     $result = mysqli_query($id_bd, $sql);
 
-    // Vérifier s'il y a des résultats
+    // Check if there are results
     if (mysqli_num_rows($result) > 0) {
-        // Début du tableau HTML
+        // Beginning of the table
         echo "<table class=table2>";
-        echo "<tr><th class=th2>Identifiant du Capteur</th></tr>";
+        echo "<tr><th class=th2>Identifiant du Capteur</th><th class=th2>Zone gauche</th><th class=th2>Zone droite</th></tr>";
 
-        // Boucle pour afficher chaque ligne de données
+        // Loop to display each row of data
         while($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             echo "<td class=td2>" . $row["IDCapteur"] . "</td>";
+            echo "<td class=td2>" . $row["IDZoneG"] . "</td>"; 
+            echo "<td class=td2>" . $row["IDZoneD"] . "</td>";
             echo "</tr>";
         }
 
-        echo "</table>"; // Fin du tableau
+        echo "</table>"; // End of the table
     } else {
         echo "<p class=bulle>Table capteurs_ultrason vide.</p>";
     }
 
-    // Fermer la connexion
+    // Close the access to the database
     mysqli_close($id_bd);
     ?>
 
@@ -64,18 +66,18 @@
         <fieldset>
             <legend>Information sur le capteur</legend>
             <label for="IDCapteur">Identifiant du capteur:</label>
-            <input type="text" name="IDCapteur" id ="IDCapteur" required/>
+            <input type="number" name="IDCapteur" id ="IDCapteur" required/>
             <label for="IDZoneG">Sélectionnez la zone à gauche du capteur :</label>
             <select name="IDZoneG" id="IDZoneG">
                 <?php
-                // Connexion à la base de données
+                // Access to the database
                 include 'mysql.php';
 
-                // Récupération des salles de la table zones_ultrason
+                // Recovery of rooms from table zones_ultrason
                 $query = "SELECT DISTINCT IDZone_ultrason FROM zones_ultrason";
                 $result = mysqli_query($id_bd, $query);
 
-                // Boucle pour afficher les options du select
+                // Loop to display the select options
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<option value='" . $row['IDZone_ultrason'] . "'>" . $row['IDZone_ultrason'] . "</option>";
                 }
@@ -84,14 +86,11 @@
             <label for="IDZoneD">Sélectionnez la zone à droite du capteur :</label>
             <select name="IDZoneD" id="IDZoneD">
                 <?php
-                // Connexion à la base de données
                 include 'mysql.php';
 
-                // Récupération des salles de la table zones_ultrason
                 $query = "SELECT DISTINCT IDZone_ultrason FROM zones_ultrason";
                 $result = mysqli_query($id_bd, $query);
 
-                // Boucle pour afficher les options du select
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<option value='" . $row['IDZone_ultrason'] . "'>" . $row['IDZone_ultrason'] . "</option>";
                 }
