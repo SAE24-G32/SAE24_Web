@@ -20,15 +20,19 @@
       </nav>
   </header>
 
+
   <h2>Tableau de consultation des positions</h2>
 
+
   <?php
+  // Connection
   $conn = mysqli_connect("localhost", "sae24", "passroot", "sae24");
   if (!$conn) {
       die("Connexion échouée: " . mysqli_connect_error());
   }
 
-  // Récupérer les IDs des salles pour le formulaire de sélection
+
+  // Retrieve room IDs for the selection form
   $sql_salles = "SELECT IDSalle FROM salles";
   $result_salles = mysqli_query($conn, $sql_salles);
   $salles = [];
@@ -40,30 +44,36 @@
       die("Erreur lors de l'exécution de la requête des salles: " . mysqli_error($conn));
   }
 
-  // Définir la taille du tableau
+
+  // Set table size
   $rows = 16;
   $cols = 16;
 
-  // Initialiser le tableau des couleurs
+
+  // Initialize the color table
   $colors = array_fill(1, $rows, array_fill(1, $cols, ''));
 
-  // Colorer les cases spécifiques en bleu
-  $colors[$rows][1] = 'blue'; // (0.25, 0.25)
-  $colors[1][1] = 'blue'; // (7.75, 0.25)
-  $colors[1][$cols] = 'blue'; // (7.75, 7.75)
+
+  // Color the sensors blue
+  $colors[1][1] = 'blue'; // (1, 1)
+  $colors[16][1] = 'blue'; // (16, 1)
+  $colors[16][16] = 'blue'; // (16, 16)
+
 
   // Gérer les données POST pour ajouter une couleur spécifique
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      if (isset($_POST['salle'])) {
-          $salle_selectionnee = $_POST['salle'];
-          $_SESSION['salle'] = $salle_selectionnee; // Stocker la salle sélectionnée dans la session
+  if ($_SERVER["REQUEST_METHOD"] == "POST") { // Checks if the request method used is POST
+      if (isset($_POST['salle'])) { // Check if key 'room' exists in POST data
+          $salle_selectionnee = $_POST['salle']; //Get the value of the selected room from the form
+          $_SESSION['salle'] = $salle_selectionnee; // Store selected room in session
       }
+
 
       // Traiter les autres données POST pour ajouter une couleur spécifique
       if (isset($_POST['row'], $_POST['col'], $_POST['color'])) {
           $row = intval($_POST['row']);
           $col = intval($_POST['col']);
           $color = $_POST['color'];
+
 
           // Vérifier si les valeurs de ligne et de colonne sont valides
           if ($row >= 1 && $row <= $rows && $col >= 1 && $col <= $cols) {
@@ -72,12 +82,15 @@
       }
   }
 
+
   // Utiliser la salle stockée dans la session si disponible
   $salle_selectionnee = isset($_SESSION['salle']) ? $_SESSION['salle'] : $salles[0];
+
 
   // Récupérer les données de la table SQL pour les positions des sons en fonction de la salle sélectionnée
   $sql_positions = "SELECT ValeurX, ValeurY, DateHeure FROM positions_son WHERE IDSalle = '$salle_selectionnee' ORDER BY DateHeure";
   $result_positions = mysqli_query($conn, $sql_positions);
+
 
   if (!$result_positions) {
       die("Erreur lors de l'exécution de la requête: " . mysqli_error($conn));
@@ -85,29 +98,44 @@
       // Récupérer toutes les positions dans un tableau
       $positions = mysqli_fetch_all($result_positions, MYSQLI_ASSOC);
 
+
       // Parcourir toutes les positions
       for ($i = 0; $i < count($positions); $i++) {
           $x = intval($positions[$i]["ValeurX"]);
           $y = intval($positions[$i]["ValeurY"]);
 
-          if ($x >= 1 && $x <= $cols && $y >= 1 && $y <= $rows) {
+
+          if ($x >= 1 && $x <= $rows && $y >= 1 && $y <= $cols) {
               if ($i == count($positions) - 1) {
                   // Dernière position en rouge
-                  $colors[$rows - $y + 1][$x] = 'red'; // Inverser l'axe des y
+                  $colors[$y][$x] = 'red'; // Inverser l'axe des y
               } else {
                   // Positions précédentes en orange
-                  $colors[$rows - $y + 1][$x] = 'orange'; // Inverser l'axe des y
+                  $colors[$y][$x] = 'orange'; // Inverser l'axe des y
               }
           }
       }
   }
 
+
   mysqli_close($conn);
   ?>
 
+  <script>
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+        }
+    };
+    xmlhttp.open("GET", "./consultation_son_refresh.php?salle=<?php echo $salle_selectionnee; ?>", true);
+    xmlhttp.send();
+</script>
+
+
   <!-- Formulaire de sélection de salle -->
   <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-      <label for="salle" class="salle-label">Sélectionnez une salle :</label>
+  <label for="salle" class="salle-label">Sélectionnez une salle :</label>
       <select id="salle" name="salle">
           <?php foreach ($salles as $salle): ?>
               <option value="<?php echo $salle; ?>" <?php echo ($salle == $salle_selectionnee) ? 'selected' : ''; ?>>
@@ -117,6 +145,7 @@
       </select>
       <button type="submit">Soumettre</button>
   </form>
+
 
   <table>
       <?php
@@ -132,17 +161,20 @@
       ?>
   </table>
 
+
   <!-- Bouton Reset -->
   <section class="reset-container">
       <button onclick="location.href='./supprimer.php'">Reset</button>
   </section>
 
+
   <footer>
       <ul class="IUT">
           <li>IUT de Blagnac</li>
           <li>Département Réseaux et Télécommunications</li>
-          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="mentions-légales.html">Mentions légales</a></li>
       </ul>
   </footer>
 </body>
 </html>
+
