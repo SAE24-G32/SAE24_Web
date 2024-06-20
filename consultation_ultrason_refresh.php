@@ -1,6 +1,6 @@
 <?php
   // Connection
-  $conn = mysqli_connect("192.168.103.217", "sae24", "passroot", "sae24");
+  $conn = mysqli_connect("localhost", "sae24", "passroot", "sae24");
   if (!$conn) {
       die("Connexion échouée: " . mysqli_connect_error());
   }
