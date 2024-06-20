@@ -24,7 +24,7 @@
 
   <?php
   // Connection
-  $conn = mysqli_connect("localhost", "sae24", "passroot", "sae24");
+  $conn = mysqli_connect("192.168.103.217", "sae24", "passroot", "sae24");
   if (!$conn) {
       die("Connexion échouée: " . mysqli_connect_error());
   }
@@ -37,7 +37,7 @@
       $salles[] = $row['IDSalle'];
   }
 
-  // Gestion des données POST
+  // Handling POST data
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $salle_selectionnee = $_POST['salle'];
       $_SESSION['salle'] = $salle_selectionnee;
@@ -45,7 +45,7 @@
       $salle_selectionnee = isset($_SESSION['salle']) ? $_SESSION['salle'] : $salles[0];
   }
 
-  // Récupérer et afficher les noms des zones pour la salle sélectionnée
+  // Retrieve and display zone names for the selected room
   $sql_zones = "SELECT NomZone FROM zones_ultrason WHERE IDSalle = '$salle_selectionnee'";
   $result_zones = mysqli_query($conn, $sql_zones);
   $zones = [];
@@ -53,14 +53,14 @@
       $zones[] = $zone['NomZone'];
   }
 
-  // Calculer le nombre de colonnes et initialiser le tableau de couleurs
+  // Calculate the number of columns and initialize the color table
   $cols = count($zones);
-  $rows = 2; // Une rangée pour les en-têtes et une pour les couleurs
+  $rows = 2; // One row for headers and one for colors
 
-  // Initialiser le tableau de couleurs
+  // Initialize the color table
   $colors = array_fill(1, $rows, array_fill(1, $cols, ''));
 
-  // Récupérer la dernière position depuis positions_ultrason
+  // Retrieve the last position from positions_ultrason
   $sql_last_position = "
       SELECT p.IDZone_ultrason, z.NomZone 
       FROM positions_ultrason p 
@@ -71,17 +71,17 @@
   $result_last_position = mysqli_query($conn, $sql_last_position);
   $last_position = mysqli_fetch_assoc($result_last_position);
 
-  // Colorer la dernière position si elle existe
+  // Color the last position if it exists
   if ($last_position) {
       $last_zone = $last_position['NomZone'];
       $col_index = array_search($last_zone, $zones) + 1;
       if ($col_index !== false) {
-          $colors[2][$col_index] = 'red'; // Couleur pour la dernière position
+          $colors[2][$col_index] = 'red'; //  Color for the last position
       }
   }
   ?>
 
-  <!-- Formulaire de sélection de salle -->
+  <!-- Room selection form -->
   <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
       <label for="salle" class="salle-label">Sélectionnez une salle :</label>
       <select id="salle" name="salle">
@@ -94,7 +94,7 @@
       <button type="submit">Soumettre</button>
   </form>
 
-  <!-- Tableau des positions -->
+  <!-- Position table -->
   <table>
       <tr>
           <th colspan="<?php echo $cols; ?>">Salle: <?php echo $salle_selectionnee; ?></th>
@@ -112,8 +112,33 @@
       </tr>
   </table>
 
+  <script>
+    const columns = document.querySelector("tbody").children[2].children
+
+    setInterval(function() {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let i = 0
+                console.log(this.responseText)
+                const zone = JSON.parse(this.responseText)
+                while (i != columns.length) {
+                    if (i == zone - 1) {
+                        columns[i].style.backgroundColor = "red"
+                    } else {
+                        columns[i].style.backgroundColor = ""
+                    }
+                    i++
+                }
+            }
+        };
+        xmlhttp.open("GET", "./consultation_ultrason_refresh.php?salle=<?php echo $salle_selectionnee; ?>", true);
+        xmlhttp.send();
+    }, 1000)
+  </script>
+
   <?php
-  // Fermer la connexion à la base de données
+  // Close the database connection
   mysqli_close($conn);
   ?>
 

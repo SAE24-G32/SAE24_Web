@@ -85,7 +85,7 @@
   mysqli_close($conn);
   ?>
 
-  <!-- Formulaire de sélection de salle -->
+   <!-- Room selection form -->
   <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
       <label for="salle" class="salle-label">Sélectionnez une salle :</label>
       <select id="salle" name="salle">
