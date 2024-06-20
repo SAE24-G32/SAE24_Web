@@ -121,35 +121,6 @@
   mysqli_close($conn);
   ?>
 
-  <script>
-    const table = document.querySelector("table")
-
-    setInterval(function() {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
-                let i = 0
-                const tableau = Object.values(this.responseText)
-                while (i != tableau.length) {
-                    const ligne = Object.values(tableau[i])
-                    let y = 0
-
-                    while (y != tableau.length) {
-                        const cas = Object.values(ligne[y])
-                        table.children[i].children[y].style.backgroundColor = cas
-                        y++
-                    }
-
-                    i++
-                }
-            }
-        };
-        xmlhttp.open("GET", "./consultation_son_refresh.php?salle=<?php echo $salle_selectionnee; ?>", true);
-        xmlhttp.send();
-    }, 1000)
-</script>
-
 
   <!-- Formulaire de sélection de salle -->
   <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
@@ -178,6 +149,35 @@
       }
       ?>
   </table>
+
+  <script>
+    const table = document.querySelector("table")
+
+    setInterval(function() {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                let i = 0
+                const tableau = Object.values(this.responseText)
+                while (i != tableau.length) {
+                    const ligne = Object.values(tableau[i])
+                    let y = 0
+
+                    while (y != tableau.length) {
+                        const cas = Object.values(ligne[y])
+                        table.children[i].children[y].style.backgroundColor = cas
+                        y++
+                    }
+
+                    i++
+                }
+            }
+        };
+        xmlhttp.open("GET", "./consultation_son_refresh.php?salle=<?php echo $salle_selectionnee; ?>", true);
+        xmlhttp.send();
+    }, 1000)
+  </script>
 
 
   <!-- Bouton Reset -->
