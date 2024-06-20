@@ -23,13 +23,13 @@
   <h2>Tableau de consultation des positions</h2>
 
   <?php
-  // Connexion à la base de données
+  // Connection
   $conn = mysqli_connect("localhost", "sae24", "passroot", "sae24");
   if (!$conn) {
       die("Connexion échouée: " . mysqli_connect_error());
   }
 
-  // Récupérer les IDSalle disponibles
+  // Retrieve room IDs for the selection form
   $sql_salles = "SELECT DISTINCT IDSalle FROM zones_ultrason";
   $result_salles = mysqli_query($conn, $sql_salles);
   $salles = [];
