@@ -197,6 +197,7 @@ nav ul li a:hover:not(.first) {
   padding-bottom: 30px; /* Adds a bottom padding of 30px */
 }
 .bulle img {
+  width: 100%;
   display: block; /* Makes the image a block element */
   text-align: center;
   margin-left: auto; /* Centers the image horizontally */
