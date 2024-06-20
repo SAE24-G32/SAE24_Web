@@ -54,12 +54,12 @@
     $cols = 16;
 
     // Initialiser le tableau des couleurs
-    $colors = array_fill(0, $rows, array_fill(0, $cols, ''));
+    $colors = array_fill(1, $rows, array_fill(1, $cols, ''));
 
     // Colorer les cases spécifiques en bleu
-    $colors[$rows-1][0] = 'blue'; // (0.25, 0.25)
-    $colors[0][0] = 'blue'; // (7.75, 0.25)
-    $colors[0][$cols-1] = 'blue'; // (7.75, 7.75)
+    $colors[16][1] = 'blue'; // (1, 1)
+    $colors[1][1] = 'blue'; // (16, 1)
+    $colors[1][16] = 'blue'; // (16, 16)
 
     // Gérer les données POST pour ajouter une couleur spécifique
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -70,13 +70,13 @@
 
         // Traiter les autres données POST pour ajouter une couleur spécifique
         if (isset($_POST['row'], $_POST['col'], $_POST['color'])) {
-            $row = intval($_POST['row']) - 1;
-            $col = intval($_POST['col']) - 1;
+            $row = intval($_POST['row']);
+            $col = intval($_POST['col']);
             $color = $_POST['color'];
 
             // Vérifier si les valeurs de ligne et de colonne sont valides
-            if ($row >= 0 && $row < $rows && $col >= 0 && $col < $cols) {
-                $colors[$rows - 1 - $row][$col] = $color; // Inverser l'axe des y
+            if ($row >= 1 && $row <= $rows && $col >= 1 && $col <= $cols) {
+                $colors[$row][$col] = $color;
             }
         }
     }
@@ -98,16 +98,16 @@
 
         // Parcourir toutes les positions
         for ($i = 0; $i < count($positions); $i++) {
-            $x = intval(($positions[$i]["ValeurX"] - 0.25) * 2);
-            $y = intval(($positions[$i]["ValeurY"] - 0.25) * 2);
+            $x = intval($positions[$i]["ValeurX"]);
+            $y = intval($positions[$i]["ValeurY"]);
 
-            if ($x >= 0 && $x < $rows && $y >= 0 && $y < $cols) {
+            if ($x >= 1 && $x <= $rows && $y >= 1 && $y <= $cols) {
                 if ($i == count($positions) - 1) {
                     // Dernière position en rouge
-                    $colors[$rows - 1 - $x][$y] = 'red'; // Inverser l'axe des y
+                    $colors[$x][$y] = 'red';
                 } else {
                     // Positions précédentes en orange
-                    $colors[$rows - 1 - $x][$y] = 'orange'; // Inverser l'axe des y
+                    $colors[$x][$y] = 'orange';
                 }
             }
         }
@@ -133,9 +133,9 @@
 
     <table>
         <?php
-        for ($i = 0; $i < $rows; $i++) {
+        for ($i = 1; $i <= $rows; $i++) {
             echo "<tr>";
-            for ($j = 0; $j < $cols; $j++) {
+            for ($j = 1; $j <= $cols; $j++) {
                 $class = "class='tab'";
                 $style = $colors[$i][$j] ? "style='background-color: {$colors[$i][$j]};'" : "";
                 echo "<td $class $style></td>";
