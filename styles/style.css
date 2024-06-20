@@ -8,19 +8,34 @@ html {
   --u: 2.1vmin;
   --c1: #404d73; /* Couleur très sombre */
   --c2: #6a7aab; /* Couleur très sombre */
-  --c3: #1b2139; /* Couleur très sombre */  
+  --c3: #1b2139; /* Couleur très sombre */
   --c4: #303a52; /* Couleur très sombre */
-	--gp: 50%/ calc(var(--u) * 10) calc(var(--u) * 10);
-	--bp: calc(var(--u) * -5) calc(var(--u) * -5);
-	height: 100vh;
-	--bg: 
-		conic-gradient(from 0deg at 75% 25%, var(--c1) 0 45deg, #fff0 0 100%) var(--gp),
-		conic-gradient(from 0deg at 75% 50%, var(--c2) 0 45deg, var(--c1) 0 90deg, #fff0 0 100%) var(--gp),
-		conic-gradient(from -45deg at 25% 25%, var(--c1) 0 135deg, #fff0 0 100%) var(--gp),
-		conic-gradient(from -90deg at 25% 50%, var(--c1) 0 45deg, var(--c3) 0 90deg, var(--c4) 0 180deg, #fff0 0 100%) var(--gp);
-	background: var(--bg),var(--bg);
-	background-position: var(--bp), var(--bp), var(--bp), var(--bp), 0 0, 0 0, 0 0, 0 0;
-	background-color: var(--c1);
+  --gp: 50% / calc(var(--u) * 10) calc(var(--u) * 10);
+  --bp: calc(var(--u) * -5) calc(var(--u) * -5);
+  height: 100vh;
+  --bg: conic-gradient(from 0deg at 75% 25%, var(--c1) 0 45deg, #fff0 0 100%)
+      var(--gp),
+    conic-gradient(
+        from 0deg at 75% 50%,
+        var(--c2) 0 45deg,
+        var(--c1) 0 90deg,
+        #fff0 0 100%
+      )
+      var(--gp),
+    conic-gradient(from -45deg at 25% 25%, var(--c1) 0 135deg, #fff0 0 100%)
+      var(--gp),
+    conic-gradient(
+        from -90deg at 25% 50%,
+        var(--c1) 0 45deg,
+        var(--c3) 0 90deg,
+        var(--c4) 0 180deg,
+        #fff0 0 100%
+      )
+      var(--gp);
+  background: var(--bg), var(--bg);
+  background-position: var(--bp), var(--bp), var(--bp), var(--bp), 0 0, 0 0, 0 0,
+    0 0;
+  background-color: var(--c1);
 }
 
 aside a {
@@ -56,8 +71,7 @@ nav {
   text-align: center;
 }
 
-nav ul 
-{
+nav ul {
   display: inline-block; /* Make the ul an inline-block element */
   border-radius: 10px; /* Rounds the corners of the border with a radius of 10px */
   background-color: black;
@@ -68,20 +82,17 @@ nav ul
   overflow: hidden;
 }
 
-nav ul li:first-child 
-{
+nav ul li:first-child {
   background-color: darkblue;
 }
 
-nav ul li 
-{
+nav ul li {
   float: left;
   border-right: none;
   border-radius: 50%;
 }
 
-nav ul li a 
-{
+nav ul li a {
   display: block;
   color: white;
   text-align: center;
@@ -89,9 +100,8 @@ nav ul li a
   text-decoration: none;
 }
 
-nav ul li a:hover:not(.first)
-{
-  background-color: #DDDDDD;
+nav ul li a:hover:not(.first) {
+  background-color: #dddddd;
   color: black;
   border-radius: 50%;
 }
@@ -241,4 +251,31 @@ footer ul li a {
   .nav-title {
     visibility: hidden; /* Hides elements with the class "nav-title" */
   }
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 480px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+td.tab {
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.salle-label {
+  color: white;
 }
