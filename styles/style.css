@@ -129,7 +129,9 @@ nav ul li a:hover:not(.first) {
   margin-left: 20px; /* Adds a left margin of 20px */
   margin-right: 20px; /* Adds a right margin of 20px */
 }
-
+.bulle h2 {
+  color: black;
+}
 section.sujet {
   margin-bottom: 200px; /* Adds a bottom margin of 200px */
 }
