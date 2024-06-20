@@ -129,6 +129,7 @@ nav ul li a:hover:not(.first) {
 }
 
 .form {
+  display: block;
   box-sizing: border-box;
   width: 70%;
   margin: 2rem auto;
