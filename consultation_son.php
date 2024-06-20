@@ -22,15 +22,6 @@
 
     <h2>Objectif de la SAE 24 :</h2>
 
-    <section class="bulle">
-        <p>
-            Nous avons créé ce site pour simplifier la consultation des mesures des
-            différents capteurs, que ce soit pour les élèves de l'IUT ou pour les
-            professeurs. La gestion du site est principalement assurée par
-            l'administrateur, ainsi que par les gestionnaires de chaque bâtiment.
-        </p>
-    </section>
-
     <?php
     $conn = mysqli_connect("localhost", "root", "", "sae24");
     if (!$conn) {
@@ -57,9 +48,9 @@
     $colors = array_fill(1, $rows, array_fill(1, $cols, ''));
 
     // Colorer les cases spécifiques en bleu
-    $colors[16][1] = 'blue'; // (1, 1)
-    $colors[1][1] = 'blue'; // (16, 1)
-    $colors[1][16] = 'blue'; // (16, 16)
+    $colors[1][1] = 'blue'; // (1, 1)
+    $colors[16][1] = 'blue'; // (16, 1)
+    $colors[16][16] = 'blue'; // (16, 16)
 
     // Gérer les données POST pour ajouter une couleur spécifique
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -76,7 +67,7 @@
 
             // Vérifier si les valeurs de ligne et de colonne sont valides
             if ($row >= 1 && $row <= $rows && $col >= 1 && $col <= $cols) {
-                $colors[$row][$col] = $color;
+                $colors[$rows - $row + 1][$col] = $color; // Inverser l'axe des y
             }
         }
     }
@@ -91,7 +82,6 @@
     if (!$result_positions) {
         die("Erreur lors de l'exécution de la requête: " . mysqli_error($conn));
     } elseif (mysqli_num_rows($result_positions) > 0) {
-        echo "Données récupérées pour la salle $salle_selectionnee:<br>";
 
         // Récupérer toutes les positions dans un tableau
         $positions = mysqli_fetch_all($result_positions, MYSQLI_ASSOC);
@@ -104,15 +94,13 @@
             if ($x >= 1 && $x <= $rows && $y >= 1 && $y <= $cols) {
                 if ($i == count($positions) - 1) {
                     // Dernière position en rouge
-                    $colors[$x][$y] = 'red';
+                    $colors[$rows - $y + 1][$x] = 'red'; // Inverser l'axe des y
                 } else {
                     // Positions précédentes en orange
-                    $colors[$x][$y] = 'orange';
+                    $colors[$rows - $y + 1][$x] = 'orange'; // Inverser l'axe des y
                 }
             }
         }
-    } else {
-        echo "Aucune donnée trouvée pour la salle $salle_selectionnee.<br>";
     }
 
     mysqli_close($conn);
@@ -133,7 +121,7 @@
 
     <table>
         <?php
-        for ($i = 1; $i <= $rows; $i++) {
+        for ($i = $rows; $i >= 1; $i--) { // Inverser l'ordre des lignes pour avoir (1,1) en bas
             echo "<tr>";
             for ($j = 1; $j <= $cols; $j++) {
                 $class = "class='tab'";
