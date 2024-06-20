@@ -38,7 +38,7 @@ html {
   background-color: var(--c1);
 }
 
-.button {
+.bouton {
   display: block;
   margin: 10px auto;
   background-color: white;
@@ -50,11 +50,11 @@ html {
   transition: background-color 0.3s ease;
 }
 
-.button:hover {
+.bouton:hover {
   background-color: #2EBC99;
 }
 
-.button:focus {
+.bouton:focus {
   outline: none;
   box-shadow: 0 0 5px grey;
 }
