@@ -158,8 +158,9 @@
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 console.log(this.responseText);
+
                 let i = 0
-                const tableau = Object.values(this.responseText)
+                const tableau = Object.values(JSON.parse(this.responseText))
                 while (i != tableau.length) {
                     const ligne = Object.values(tableau[i])
                     console.log(ligne)
